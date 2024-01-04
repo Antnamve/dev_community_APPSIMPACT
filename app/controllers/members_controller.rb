@@ -40,6 +40,14 @@ class MembersController < ApplicationController
   private
 
   def user_personal_info_params
-    params.require(:user).permit(:first_name, :last_name, :city, :state, :country, :pincode, :profile_title)
+    params.require(:user).permit(
+      :first_name, 
+      :last_name, 
+      :city, 
+      :state, 
+      :country, 
+      :pincode, 
+      :profile_title
+    )
   end
 end
