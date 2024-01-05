@@ -5,7 +5,7 @@ class WorkExperiencesController < ApplicationController
   def new
     @work_experience = current_user.work_experiences.new
   end
-
+  
   def edit; end
 
   def create; end
