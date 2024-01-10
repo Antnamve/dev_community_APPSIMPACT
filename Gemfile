@@ -21,7 +21,6 @@ gem 'devise'
 gem 'faker'
 gem 'kaminari'
 gem 'ransack'
-gem 'rubocop'
 
 group :development, :test do
   gem 'debug', platforms: %i[mri mingw x64_mingw]
@@ -35,3 +34,15 @@ group :test do
   gem 'capybara'
   gem 'selenium-webdriver'
 end
+
+gem 'omniauth'
+gem 'omniauth-google-oauth2'
+gem 'omniauth-rails_csrf_protection', '~> 1.0'
+gem 'stimulus_reflex', '= 3.5.0.pre8'
+
+gem 'dotenv-rails', groups: %i[development test]
+gem 'meta-tags'
+
+gem 'fullcalendar-rails'
+gem 'momentjs-rails'
+gem 'rubocop', '~> 1.57', require: false

@@ -12,5 +12,5 @@ Rails.application.routes.draw do
   get 'membet-connections/:id', to: 'members#connections', as: 'member_connections'
 
   resources :work_experiences 
-  resources :conections
+  resources :connections
 end
