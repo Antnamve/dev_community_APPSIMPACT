@@ -2,17 +2,8 @@ require 'rails_helper'
 
 RSpec.feature "Logins", type: :feature do
   shared_examples 'a successful login' do |login_field|
+    let(:user) { create(:user) }
     it "should login user with #{login_field}" do
-      user = User.create(
-               email: 'user@example.com',
-               password: 'password',
-               username: 'exmaple_user',
-               first_name: 'Example',
-               last_name: 'User',
-               profile_title: 'Senior RoR developer',
-               confirmed_at: Datetime.now
-             )
-
       visit root_path
 
       fill_in 'user_login', with: user.send(login_field)
