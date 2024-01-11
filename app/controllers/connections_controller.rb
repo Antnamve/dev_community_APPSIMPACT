@@ -1,5 +1,4 @@
 class ConnectionsController < ApplicationController
-
   def index
     @requested_connections = Connection.includes(:requested).where(user_id: current_user.id)
     @received_connections = Connection.includes(:received).where(connected_user_id: current_user.id)
@@ -33,6 +32,7 @@ class ConnectionsController < ApplicationController
         end
       end
     end
+
     render_turbo_stream(
       'replace',
       "connection-status-#{@connection.id}",

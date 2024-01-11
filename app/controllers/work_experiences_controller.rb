@@ -21,9 +21,9 @@ class WorkExperiencesController < ApplicationController
         'replace',
         'remote_modal',
         'shared/turbo_modal',
-        { 
-          form_partial: 'work_experiences/form', 
-          modal_title: 'Add new work experience' 
+        {
+          form_partial: 'work_experiences/form',
+          modal_title: 'Add new work experience'
         }
       )
     end
@@ -42,9 +42,9 @@ class WorkExperiencesController < ApplicationController
         'replace',
         'remote_modal',
         'shared/turbo_modal',
-        { 
-          form_partial: 'work_experiences/form', 
-          modal_title: 'Edit work experience' 
+        {
+          form_partial: 'work_experiences/form',
+          modal_title: 'Edit work experience'
         }
       )
     end

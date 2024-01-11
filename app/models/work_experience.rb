@@ -56,7 +56,7 @@ class WorkExperience < ApplicationRecord
     duration = "#{result.first} #{result.first > 1 ? 'years' : 'year'} #{result.last} #{result.last > 1 ? 'months' : 'month' }"
 
     if currently_working_here
-      "#{start_date.strftime("%b %Y")} - Present (#{duration})"
+      "#{start_date.strftime('%b %Y')} - Present (#{duration})"
     else
       "#{start_date.strftime("%b %Y")} - #{end_date.strftime("%b %Y")} (#{duration})"
     end

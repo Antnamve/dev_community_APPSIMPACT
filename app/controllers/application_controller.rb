@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!
+
   private
 
   def render_turbo_stream(action, target, partial = nil, locals = {})
@@ -16,5 +17,4 @@ class ApplicationController < ActionController::Base
       end
     end
   end
-
 end
