@@ -3,14 +3,14 @@ import { Controller } from "@hotwired/stimulus"
 // Connects to data-controller="bs-modal-form"
 export default class extends Controller {
   connect() {
-    console.log('I am connected!!!')
+    console.log('I am connected!!!');
   }
 
-  intitialize() {
-    this.element.setAttribute('data-action', "click->bs-modal-form#ShowModal")
+  initialize() {
+    this.element.setAttribute('data-action', "click->bs-modal-form#showModal")
   }
 
-  ShowModal(event) {
+  showModal(event) {
     event.preventDefault()
     this.url = this.element.getAttribute('href')
     fetch(this.url, {

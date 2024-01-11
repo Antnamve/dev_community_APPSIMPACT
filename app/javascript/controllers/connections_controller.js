@@ -12,11 +12,12 @@ export default class extends Controller {
 
   prepareConnectionParams() {
     event.preventDefault()
-    this.url = this.element.getAttrubute("href")
+    this.url = this.element.getAttribute("href")
 
     const element = this.connectionTarget
     const requesterId = element.dataset.requesterId
     const connectedId = element.dataset.connectedId
+
     const connectionBody = new FormData()
 
     connectionBody.append("connection[user_id]", requesterId)
@@ -27,7 +28,7 @@ export default class extends Controller {
       method: "POST",
       headers: {
         Accept: "text/vnd.turbo-stream.html",
-        "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+        'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
       },
       body: connectionBody
     })

@@ -9,7 +9,6 @@ class WorkExperiencesController < ApplicationController
 
   def create
     @work_experience = current_user.work_experiences.new(work_experience_params)
-
     if @work_experience.save
       render_turbo_stream(
         'append',
@@ -66,9 +65,6 @@ class WorkExperiencesController < ApplicationController
   end
 
   def work_experience_params
-    params.require(:work_experience)
-          .permit(:start_date, :end_date, :currently_working_here,
-                  :company, :employment_type, :location, :location_type,
-                  :description, :user_id, :job_title)
+    params.require(:work_experience).permit(:start_date, :end_date, :currently_working_here, :company, :employment_type, :location, :location_type, :description, :user_id, :job_title)
   end
 end

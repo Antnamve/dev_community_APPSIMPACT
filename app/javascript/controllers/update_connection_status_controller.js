@@ -4,13 +4,13 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   connect() {
   }
-  
+
   initialize() {
     this.element.setAttribute("data-action", "click->update-connection-status#updateConnectionStatus")
   }
 
   updateConnectionStatus() {
-    event.preventDefault
+    event.preventDefault()
     this.url = this.element.getAttribute("href")
 
     const connectionBody = new FormData()

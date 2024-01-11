@@ -8,7 +8,6 @@ class ConnectionsController < ApplicationController
   def create
     @connection = current_user.connections.new(connection_params)
     @connector = User.find(connection_params[:connected_user_id])
-
     if @connection.save
       render_turbo_stream(
         'replace',
@@ -21,18 +20,19 @@ class ConnectionsController < ApplicationController
 
   def update
     @connection = Connection.find(params[:id])
-    ActiveRecord::Base.transaction do
-      if @connection.update(connection_params) && (@connection.status == 'accepted')
-        receiver = @connection.received
-        receiver.connected_user_id << @connection.requested.id
-        receiver.save
+    ActiveRecord::Base.transaction do 
+      if @connection.update(connection_params)
+        if @connection.status == 'accepted'
+          receiver = @connection.received
+          receiver.connected_user_ids << @connection.requested.id
+          receiver.save
 
-        requester = @connection.requested
-        requester.connected_user_id << @connection.received.id
-        requester.save
+          requester = @connection.requested
+          requester.connected_user_ids << @connection.received.id
+          requester.save
+        end
       end
     end
-    
     render_turbo_stream(
       'replace',
       "connection-status-#{@connection.id}",
