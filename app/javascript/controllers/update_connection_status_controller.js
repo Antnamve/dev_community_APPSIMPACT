@@ -4,7 +4,7 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   connect() {
   }
-
+  
   initialize() {
     this.element.setAttribute("data-action", "click->update-connection-status#updateConnectionStatus")
   }

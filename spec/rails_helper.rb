@@ -1,7 +1,7 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'spec_helper'
-require "capybara/rspec"
-require "selenium/webdriver"
+require 'capybara/rspec'
+require 'selenium/webdriver'
 ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
 # Prevent database truncation if the environment is production
@@ -65,7 +65,8 @@ RSpec.configure do |config|
 
   config.include Devise::Test::ControllerHelpers, type: :controller
   config.include Devise::Test::IntegrationHelpers, type: :request
-    
+  config.include Devise::Test::IntegrationHelpers, type: :feature
+
   Capybara.register_driver :chrome do |app|
     Capybara::Selenium::Driver.new(app, browser: :chrome, options: options)
   end
@@ -74,9 +75,8 @@ RSpec.configure do |config|
   Capybara.default_driver = :chrome
 
   def options
-    options = Selenium::WebDriver::Chrome::Options.new
+    options = Selenium::Webdriver::Chrome::Options.new
     options.add_argument('--start-maximized')
     options
   end
-
 end

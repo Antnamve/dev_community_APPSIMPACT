@@ -2,12 +2,39 @@
   "name": "app",
   "private": "true",
   "dependencies": {
-    "@popperjs/core": "^2.11.7",
-    "bootstrap": "^5.2.3",
-    "bootstrap-icons": "^1.10.5",
-    "sass": "^1.62.1"
+    "@popperjs/core": "^2.11.8",
+    "autoprefixer": "^10.4.16",
+    "bootstrap": "^5.3.2",
+    "bootstrap-icons": "^1.11.2",
+    "nodemon": "^3.0.2",
+    "postcss": "^8.4.32",
+    "postcss-cli": "^11.0.0",
+    "sass": "^1.69.5",
+    "stimulus_reflex": "3.5.0-pre8"
   },
   "scripts": {
-    "build:css": "sass ./app/assets/stylesheets/application.bootstrap.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules"
-  }
+    "build:css:compile": "sass ./app/assets/stylesheets/application.bootstrap.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules",
+    "build:css:prefix": "postcss ./app/assets/builds/application.css --use=autoprefixer --output=./app/assets/builds/application.css",
+    "build:css": "yarn build:css:compile && yarn build:css:prefix",
+    "watch:css": "nodemon --watch ./app/assets/stylesheets/ --ext scss --exec \"yarn build:css\"",
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "app/**/*.{js,es6,jsx,scss,css}": [
+      "./node_modules/prettier/bin/prettier.js --single-quote --trailing-comma es5 --write",
+      "git add"
+    ],
+    "{app,test}/**/*.rb": [
+      "bundle exec rubocop -a",
+      "git add"
+    ]
+  },
+  "devDependencies": {
+    "husky": "^0.13.4",
+    "lint-staged": "^3.6.0",
+    "prettier": "^1.4.2"
+  },
+  "browserslist": [
+    "defaults"
+  ]
 }

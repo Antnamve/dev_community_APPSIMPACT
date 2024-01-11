@@ -2,7 +2,8 @@ class MembersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @connections = Connection.where('user_id = ? OR connected_user_id = ?', params[:id], params[:id]).where(status: 'accepted')
+    @connections = Connection.where('user_id = ? OR connected_user_id = ?', params[:id],
+                                    params[:id]).where(status: 'accepted')
     @mutual_connections = current_user.mutually_connected_ids(@user)
   end
 
@@ -35,10 +36,10 @@ class MembersController < ApplicationController
   def connections
     @user = User.find(params[:id])
     total_users = if params[:mutual_connections].present?
-                         User.where(id: current_user.mutually_connected_ids(@user))
-                       else
-                         User.where(id: @user.connected_user_ids)
-                       end
+                    User.where(id: current_user.mutually_connected_ids(@user))
+                  else
+                    User.where(id: @user.connected_user_ids)
+                  end
     @connected_users = total_users.page(params[:page]).per(10)
     @total_connections = total_users.count
   end
@@ -46,7 +47,14 @@ class MembersController < ApplicationController
   private
 
   def user_personal_info_params
-    params.require(:user).permit(:first_name, :last_name, :city, :state, :country, :pincode, :profile_title)
+    params.require(:user).permit(
+      :first_name,
+      :last_name,
+      :city,
+      :state,
+      :country,
+      :pincode,
+      :profile_title
+    )
   end
-
 end

@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
   def render_turbo_stream(action, target, partial = nil, locals = {})
     respond_to do |format|
-      format.turbo_stream do 
+      format.turbo_stream do
         case action
         when 'replace'
           render turbo_stream: turbo_stream.replace(target, partial: partial, locals: locals)
