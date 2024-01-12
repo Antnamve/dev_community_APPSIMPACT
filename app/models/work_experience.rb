@@ -28,7 +28,7 @@ class WorkExperience < ApplicationRecord
     !currently_working_here
   end
 
-  def currently_not_working_here?
+  def end_date_greater_than_start_date
     return if end_date.nil?
 
     return unless end_date < start_date

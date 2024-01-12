@@ -12,9 +12,9 @@ RSpec.feature "Logins", type: :feature do
       click_button 'Log in'
 
       expect(page).to have_link('Dev Community')
-      expect(page).to have_link('My profile')
-      expect(page).to have_link('My network')
-      expect(page).to have_link('Sign out')
+      expect(page).to have_link('My Profile')
+      expect(page).to have_link('My Network')
+      expect(page).to have_link('Sign Out')
       expect(page).to have_text('Search professionals across the world!')
       expect(page).to have_text(user.name)
       expect(page).to have_text(user.profile_title)

@@ -8,7 +8,7 @@ RSpec.feature "UserSearches", type: :feature do
 
       @user1 = create(:user, country: 'India', city: 'Indore')
       @user2 = create(:user, country: 'Australia', city: 'Sydney')
-      @user3 = create(:user, country: 'UK', city: 'London')
+      @user3 = create(:user, country: 'England', city: 'London')
       @user4 = create(:user, country: 'USA', city: 'New York')
       sleep 1
       
@@ -108,7 +108,7 @@ RSpec.feature "UserSearches", type: :feature do
         expect(page).to have_text(@user1.profile_title)
         expect(page).to have_text(@user1.country)
 
-        expect(page).to_not have_text(@user1.country)
+        expect(page).to_not have_text(@user2.country)
         expect(page).to_not have_text(@user3.country)
         expect(page).to_not have_text(@user4.country)
 

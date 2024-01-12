@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.feature "UserSettings", type: :feature do
   describe 'user settings' do
-    before each do
+    before :each do
       @user = create(:user)
       sign_in(@user)
       sleep 1
@@ -15,7 +15,7 @@ RSpec.feature "UserSettings", type: :feature do
       expect(page).to have_text(@user.name)
       expect(page).to have_text(@user.address)
       expect(page).to have_text(@user.profile_title)
-      expect(page).to have_text('About  ')
+      expect(page).to have_text('About')
       expect(page).to have_text(@user.about)
 
       find(:xpath, '//a[contains(@class, "edit-profile")]//i[contains(@class, "bi-pencil-fill")]').click

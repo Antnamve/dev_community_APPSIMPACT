@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   }
   root 'home#index'
 
-  get 'members/:id', to: 'members#show', as: 'member'
+  get 'member/:id', to: 'members#show', as: 'member'
   
   get 'edit_description', to: 'members#edit_description', as: 'edit_member_description'
   patch 'update_description', to: 'members#update_description', as: 'update_member_description'

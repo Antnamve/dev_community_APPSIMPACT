@@ -14,6 +14,6 @@ FactoryBot.define do
     profile_title {User::PROFILE_TITLE.sample}
     password {'password'}
     about {Faker::Lorem.paragraphs(number: 4).to_s.gsub(/^\[|\]$/, '')}
-    confirmed_at {Datetime.now}
+    confirmed_at {DateTime.now}
   end
 end

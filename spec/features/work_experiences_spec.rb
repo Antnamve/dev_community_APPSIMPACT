@@ -40,14 +40,13 @@ RSpec.feature "WorkExperiences", type: :feature do
         select 'Full-time', from: 'work_experience_employment_type'
         fill_in 'work_experience_location', with: 'Moscow, Russia'
         select 'Remote', from: 'work_experience_location_type'
-        fill_in 'work_experience_start_date', with: '01/01/2018'
-        fill_in 'work_experience_end_date', with: '31/12/2020'
+        fill_in 'work_experience_start_date', with: '2018-10-01'
+        fill_in 'work_experience_end_date', with: '2020-11-12'
         fill_in 'work_experience_description', with: 'Test description'
-        sleep 5
         click_button 'Save Changes'
         visit "/member/#{@user.id}"
 
-        expect(page).to have_text('Senior Ruby on Rails developer')expect(page).to have_text('')
+        expect(page).to have_text('Senior Ruby on Rails developer')
         expect(page).to have_text('Developer Community PVT LTD (Full-time)')
         expect(page).to have_text('Moscow, Russia (Remote)')
         sleep 5

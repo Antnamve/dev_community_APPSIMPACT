@@ -35,7 +35,7 @@
         </label>
         <%= form.select :employment_type, options_for_select(WorkExperience::EMPLOYMENT_TYPE, selected: form.object.employment_type), {prompt: 'Select employment type'}, class: "form-select" %>
       </div>
-      # prompt: 'Select employment type'
+
       <div class="form-group">
         <label class="mb-2 mt-3">
           Location
@@ -51,7 +51,7 @@
         </label>
         <%= form.select :location_type, options_for_select(WorkExperience::LOCATION_TYPE, selected: form.object.location_type), {prompt: 'Select location type'}, class: "form-select" %>
       </div>
-      # prompt: 'Select location type'
+
       <div class="form-group row">
         <div class="col-lg-12 mt-3">
           <div class="form-check form-switch">
