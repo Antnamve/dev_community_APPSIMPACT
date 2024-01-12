@@ -68,15 +68,15 @@ RSpec.configure do |config|
   config.include Devise::Test::IntegrationHelpers, type: :feature
 
   Capybara.register_driver :chrome do |app|
-    Capybara::Selenium::Driver.new(app, browser: :chrome, options: options)
+    Capybara::Selenium::Driver.new(app, browser: :firefox)
   end
 
   Capybara.javascript_driver = :chrome
   Capybara.default_driver = :chrome
 
-  def options
-    options = Selenium::Webdriver::Chrome::Options.new
-    options.add_argument('--start-maximized')
-    options
-  end
+  # def options
+  # options = Selenium::Webdriver::Chrome::Options.new
+  # options.add_argument('--start-maximized')
+  # options
+  # end
 end

@@ -6,15 +6,13 @@ RSpec.feature "HomePages", type: :feature do
       visit root_path
 
       expect(page).to have_text('Dev Community')
-      expect(page).to have_text('Log In')
+      expect(page).to have_text('Log in')
       expect(page).to have_link('Sign In')
       expect(page).to have_link('Sign up')
       expect(page).to have_link('Forgot your password?')
       expect(page).to have_link("Didn't receive confirmation instructions?")
 
       expect(page).to_not have_text('Search professionals across the world!')
-
-      debugger
     end
   end
 end
